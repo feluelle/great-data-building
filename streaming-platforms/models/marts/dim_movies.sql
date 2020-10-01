@@ -1,0 +1,27 @@
+select stg_imdb_movies.title_id,
+       stg_imdb_movies.title,
+       stg_imdb_movies.release_year,
+       stg_imdb_movies.date_published,
+       stg_imdb_movies.genre,
+       stg_imdb_movies.duration_in_minutes,
+       stg_imdb_movies.countries,
+       stg_imdb_movies.language,
+       stg_imdb_movies.directors,
+       stg_imdb_movies.writers,
+       stg_imdb_movies.production_company,
+       stg_imdb_movies.actors,
+       stg_imdb_movies.description,
+       stg_imdb_movies.avg_vote,
+       stg_imdb_movies.votes,
+       stg_imdb_movies.budget,
+       stg_imdb_movies.usa_gross_income,
+       stg_imdb_movies.worldwide_gross_income,
+       stg_imdb_movies.metascore,
+       stg_imdb_movies.reviews_from_users,
+       stg_imdb_movies.reviews_from_critics,
+       stg_netflix_titles.date_added as netflix_date_added,
+       stg_netflix_titles.rating as netflix_rating,
+       stg_netflix_titles.categories as netflix_categories
+from {{ ref('stg_imdb_movies') }}
+left join {{ ref('stg_netflix_titles') }}
+on stg_imdb_movies.title = stg_netflix_titles.title and stg_netflix_titles."type" = 'Movie'

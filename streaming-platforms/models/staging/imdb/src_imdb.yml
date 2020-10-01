@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: imdb
+    schema: streaming_platforms_imdb
+    tables:
+      - name: src_imdb_movies
+      - name: src_imdb_names
+      - name: src_imdb_ratings
+      - name: src_imdb_title_principals

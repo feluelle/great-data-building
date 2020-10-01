@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: mixed
+    schema: streaming_platforms_mixed
+    tables:
+      - name: src_mixed_movies

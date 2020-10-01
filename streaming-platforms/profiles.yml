@@ -1,0 +1,16 @@
+
+# For more information on how to configure this file, please see:
+# https://docs.getdbt.com/docs/profile
+
+great-data-building:
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: localhost
+      port: 5432
+      user: dbt
+      pass: dbt
+      dbname: dbt
+      schema: streaming_platforms
+  target: dev

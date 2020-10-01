@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_netflix_titles
+    description: "Performs basic operations like cleaning or renaming columns"
+  - name: stg_netflix_titles__categories
+    description: "Adds a categories table based on listed_in"
+  - name: stg_netflix_titles__actors
+    description: "Adds a actors table based on cast"
+  - name: stg_netflix_titles__directors
+    description: "Adds a directors table based on director"
+  - name: stg_netflix_titles__countries
+    description: "Adds a countries table based on country"

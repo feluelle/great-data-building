@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: stg_imdb_movies
+    description: "Performs basic operations like cleaning or renaming columns"
+  - name: stg_imdb_movies__countries
+    description: "Adds a countries table based on country"

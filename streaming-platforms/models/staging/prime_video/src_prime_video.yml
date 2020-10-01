@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: prime_video
+    schema: streaming_platforms_prime_video
+    tables:
+      - name: src_prime_video_tv_shows

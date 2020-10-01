@@ -1,0 +1,8 @@
+
+target/
+dbt_modules/
+logs/
+
+# NOTE: In this case the data folder contains real data - not seeds.
+data/
+# Seeds can be commited to git - data should not.

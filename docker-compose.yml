@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  dbt-db:
+    image: library/postgres:latest
+    container_name: dbt_db
+    environment:
+      - POSTGRES_USER=dbt
+      - POSTGRES_PASSWORD=dbt
+      - POSTGRES_DB=dbt
+    ports:
+      - 5432:5432

@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: netflix
+    schema: streaming_platforms_netflix
+    tables:
+      - name: src_netflix_titles
