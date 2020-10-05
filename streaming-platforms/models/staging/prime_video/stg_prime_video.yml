@@ -3,3 +3,5 @@ version: 2
 models:
   - name: stg_prime_video_tv_shows
     description: "Performs basic operations like cleaning or renaming columns"
+  - name: stg_prime_video_tv_shows__genres
+    description: "Adds a genres table based on genres"

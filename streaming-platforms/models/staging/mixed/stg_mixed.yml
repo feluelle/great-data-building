@@ -1,11 +1,11 @@
 version: 2
 
 models:
-  - name: stg_imdb_movies
+  - name: stg_mixed
     description: "Performs basic operations like cleaning or renaming columns"
-  - name: stg_imdb_movies__countries
+  - name: stg_mixed__countries
     description: "Adds a countries table based on countries"
-  - name: stg_imdb_movies__genres
-    description: "Adds a genres table based on genres"
-  - name: stg_imdb_movies__languages
+  - name: stg_mixed__directors
+    description: "Adds a directors table based on directors"
+  - name: stg_mixed__languages
     description: "Adds a languages table based on languages"

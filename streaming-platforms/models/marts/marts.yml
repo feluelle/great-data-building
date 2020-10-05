@@ -1,19 +1,23 @@
 version: 2
 
 models:
-  - name: dim_tv_shows
-    description: "Shows TV-Shows only"
   - name: dim_movies
     description: "Shows Movies only"
-  - name: fct_top_10_categories
-    description: "Shows the top 10 categories"
-  - name: fct_this_years_added_tv_shows
-    description: "Shows the TV shows added this year"
+  - name: dim_tv_shows
+    description: "Shows TV-Shows only"
+  - name: fct_movies_from_usa
+    description: "Shows the movies from the US"
+  - name: fct_this_years_added_tv_shows_to_netflix
+    description: "Shows the TV shows added this year to Netflix"
+  - name: fct_top_10_actors
+    description: "Shows the top 10 actors"
+  - name: fct_top_10_directors
+    description: "Shows the top 10 directors"
+  - name: fct_top_10_genres
+    description: "Shows the top 10 genres"
+  - name: fct_tv_shows_per_provider
+    description: "Shows the TV shows per provider"
   - name: fct_type_percentage
     description: "Shows the percentages for every type out of all netflix titles"
   - name: fct_unique_values
     description: "Shows the number of unique titles"
-  - name: fct_top_10_actors
-    description: "Shows the top 10 actors"
-  - name: fct_movies_from_usa
-    description: "Shows the movies from the US"
