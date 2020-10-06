@@ -9,3 +9,11 @@ models:
     description: "Adds a genres table based on genres"
   - name: stg_imdb_movies__languages
     description: "Adds a languages table based on languages"
+  - name: stg_imdb_names
+    description: "Performs basic operations like cleaning or renaming columns"
+  - name: stg_imdb_ratings
+    description: "Performs basic operations like cleaning or renaming columns"
+  - name: stg_imdb_title_principals
+    description: "Performs basic operations like cleaning or renaming columns"
+  - name: stg_imdb_title_principals__characters
+    description: "Adds a characters table based on characters"
