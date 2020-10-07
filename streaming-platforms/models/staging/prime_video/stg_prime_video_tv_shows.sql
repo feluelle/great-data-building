@@ -1,6 +1,7 @@
 with stg_prime_video_tv_shows as (
 
-    select "S.no." as show_number,
+    select md5(row("Name of the show", 'TV Show', "Year of release")::text) as uid,
+           "S.no." as show_number,
            "Name of the show" as show_name,
            "Year of release" as release_year,
            "No of seasons available" as seasons,

@@ -1,4 +1,4 @@
-with fct_top_10_genres as (
+with fct_top_10_genres_on_netflix as (
 
     select genre, count(genre) as total
     from {{ ref('stg_netflix_titles__genres') }}
@@ -11,4 +11,4 @@ with fct_top_10_genres as (
 )
 
 select *
-from fct_top_10_genres
+from fct_top_10_genres_on_netflix

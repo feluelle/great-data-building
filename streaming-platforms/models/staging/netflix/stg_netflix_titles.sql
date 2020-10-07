@@ -1,6 +1,7 @@
 with stg_netflix_titles as (
 
-    select show_id,
+    select md5(row(title, "type", release_year)::text) as uid,
+           show_id,
            "type",
            title,
            director as directors,

@@ -7,6 +7,8 @@ models:
     description: "Adds a actors table based on actors"
   - name: stg_imdb_movies__countries
     description: "Adds a countries table based on countries"
+  - name: stg_imdb_movies__directors
+    description: "Adds a directors table based on directors"
   - name: stg_imdb_movies__genres
     description: "Adds a genres table based on genres"
   - name: stg_imdb_movies__languages

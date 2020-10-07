@@ -1,9 +1,10 @@
 with stg_mixed__countries as (
 
     select unnest(string_to_array(countries, ', ')) as country,
+           uid,
            id
     from {{ ref('stg_mixed') }}
-    group by country, id
+    group by country, uid, id
 
 )
 

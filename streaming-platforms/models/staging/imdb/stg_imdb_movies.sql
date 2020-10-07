@@ -1,6 +1,7 @@
 with stg_imdb_movies as (
 
-    select imdb_title_id as title_id,
+    select md5(row(title, 'Movie', regexp_replace("year", '\D', '', 'g')::int)::text) as uid,
+           imdb_title_id as title_id,
            title,
            original_title,
            regexp_replace("year", '\D', '', 'g')::int as release_year,

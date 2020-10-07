@@ -69,6 +69,42 @@ with fct_tv_shows_per_provider as (
     from {{ ref('stg_mixed') }}
     where disney_plus = 1
 
+    union
+
+    select 'Netflix' as provider,
+           title,
+           directors,
+           NULL as actors,
+           countries,
+           NULL as date_added,
+           release_year,
+           NULL as rating,
+           NULL as seasons,
+           genres,
+           NULL as description,
+           viewers_age,
+           imdb_rating
+    from {{ ref('stg_mixed') }}
+    where netflix = 1
+
+    union
+
+    select 'Prime Video' as provider,
+           title,
+           directors,
+           NULL as actors,
+           countries,
+           NULL as date_added,
+           release_year,
+           NULL as rating,
+           NULL as seasons,
+           genres,
+           NULL as description,
+           viewers_age,
+           imdb_rating
+    from {{ ref('stg_mixed') }}
+    where prime_video = 1
+
 )
 
 select *

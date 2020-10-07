@@ -1,6 +1,7 @@
 with stg_mixed as (
 
-    select "ID" as id,
+    select md5(row("Title", 'Unknown', "Year")::text) as uid,
+           "ID" as id,
            "Title" as title,
            "Year" as release_year,
            "Age" as viewers_age,

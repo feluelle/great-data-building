@@ -1,9 +1,10 @@
 with stg_mixed__directors as (
 
     select unnest(string_to_array(directors, ', ')) as director,
+           uid,
            id
     from {{ ref('stg_mixed') }}
-    group by director, id
+    group by director, uid, id
 
 )
 

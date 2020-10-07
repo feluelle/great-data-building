@@ -17,11 +17,11 @@ models:
     description: "Shows the top 10 actors"
   - name: fct_top_10_directors
     description: "Shows the top 10 directors"
-  - name: fct_top_10_genres
-    description: "Shows the top 10 genres"
+  - name: fct_top_10_genres_on_netflix
+    description: "Shows the top 10 genres on Netflix"
   - name: fct_tv_shows_per_provider
     description: "Shows the TV shows per provider"
   - name: fct_type_percentage
     description: "Shows the percentages for every type out of all netflix titles"
-  - name: fct_unique_values
+  - name: fct_unique_titles
     description: "Shows the number of unique titles"
