@@ -5,10 +5,14 @@ models:
     description: "Shows Movies only"
   - name: dim_tv_shows
     description: "Shows TV-Shows only"
+  - name: fct_all_titles
+    description: "Shows all titles"
   - name: fct_movies_from_usa
     description: "Shows the movies from the US"
   - name: fct_this_years_added_tv_shows_to_netflix
     description: "Shows the TV shows added this year to Netflix"
+  - name: fct_titles_movie_and_tv_show
+    description: "Shows all titles that are movie and tv-show"
   - name: fct_top_10_actors
     description: "Shows the top 10 actors"
   - name: fct_top_10_directors
