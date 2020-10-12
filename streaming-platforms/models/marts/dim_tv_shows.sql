@@ -21,7 +21,7 @@ with dim_tv_shows as (
            stg_prime_video_tv_shows.viewers_age as prime_video_viewers_age
     from {{ ref('stg_netflix_titles') }}
     full join {{ ref('stg_prime_video_tv_shows') }}
-    on stg_netflix_titles.title = stg_prime_video_tv_shows.show_name and stg_netflix_titles."type" = 'TV Show'
+    on stg_netflix_titles.uid = stg_prime_video_tv_shows.uid and stg_netflix_titles."type" = 'TV Show'
 
 )
 

@@ -34,7 +34,7 @@ with dim_movies as (
            stg_netflix_titles.description as netflix_description
     from {{ ref('stg_imdb_movies') }}
     full join {{ ref('stg_netflix_titles') }}
-    on stg_imdb_movies.title = stg_netflix_titles.title and stg_netflix_titles."type" = 'Movie'
+    on stg_imdb_movies.uid = stg_netflix_titles.uid and stg_netflix_titles."type" = 'Movie'
 
 )
 
