@@ -8,7 +8,7 @@ with fct_tv_shows_per_provider as (
            date_added,
            release_year,
            rating,
-           regexp_replace(duration, '\D', '', 'g')::integer as seasons,
+           duration as seasons,
            genres,
            description,
            NULL as viewers_age,

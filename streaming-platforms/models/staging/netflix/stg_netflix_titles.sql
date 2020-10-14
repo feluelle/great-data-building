@@ -1,7 +1,6 @@
-with stg_netflix_titles as (
+with pre__stg_netflix_titles as (
 
-    select md5(row(title, "type", release_year)::text) as uid,
-           show_id,
+    select show_id,
            "type",
            title,
            director as directors,
@@ -10,12 +9,19 @@ with stg_netflix_titles as (
            to_date(date_added, 'MONTH DD, YYYY') as date_added,
            release_year,
            rating,
-           duration,
+           {{ extract_number_from_string("duration") }}::int as duration,
            listed_in as genres,
            description
     from {{ source('netflix', 'src_netflix_titles') }}
+    where director is not null  -- A director is essential for the uniqueness of a title
+
+), stg_netflix_titles as (
+
+    select {{ create_uid("title", "type", "release_year", "duration", "directors") }} as uid,
+           *
+    from pre__stg_netflix_titles
 
 )
 
-select *
+select distinct on(uid) *
 from stg_netflix_titles

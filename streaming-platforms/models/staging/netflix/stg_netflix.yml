@@ -3,11 +3,90 @@ version: 2
 models:
   - name: stg_netflix_titles
     description: "Performs basic operations like cleaning or renaming columns"
+    columns:
+      - name: uid
+        tests:
+          - unique
+          - not_null
+      - name: show_id
+        tests:
+          - unique
+          - not_null
+      - name: type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Movie', 'TV Show']
+      - name: title
+        tests:
+          - not_null
+      - name: directors
+        tests:
+          - not_null
+      - name: actors
+      - name: countries
+      - name: date_added
+      - name: release_year
+        tests:
+          - not_null
+      - name: rating
+      - name: duration
+      - name: genres
+      - name: description
   - name: stg_netflix_titles__actors
     description: "Adds a actors table based on actors"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_netflix_titles')
+              field: uid
+      - name: actor
+        tests:
+          - not_null
   - name: stg_netflix_titles__countries
     description: "Adds a countries table based on countries"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_netflix_titles')
+              field: uid
+      - name: show_id
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null
   - name: stg_netflix_titles__directors
     description: "Adds a directors table based on directors"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_netflix_titles')
+              field: uid
+      - name: show_id
+        tests:
+          - not_null
+      - name: director
+        tests:
+          - not_null
   - name: stg_netflix_titles__genres
     description: "Adds a genres table based on genres"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_netflix_titles')
+              field: uid
+      - name: show_id
+        tests:
+          - not_null
+      - name: genre
+        tests:
+          - not_null

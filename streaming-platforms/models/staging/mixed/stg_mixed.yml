@@ -3,9 +3,90 @@ version: 2
 models:
   - name: stg_mixed
     description: "Performs basic operations like cleaning or renaming columns"
+    columns:
+      - name: uid
+        tests:
+          - unique
+          - not_null
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: title
+        tests:
+          - not_null
+      - name: release_year
+        tests:
+          - not_null
+      - name: viewers_age
+      - name: imdb_rating
+      - name: rotten_tomatoes_rating
+      - name: netflix
+        tests:
+          - accepted_values:
+              values: [ 0, 1 ]
+      - name: hulu
+        tests:
+          - accepted_values:
+              values: [ 0, 1 ]
+      - name: prime_video
+        tests:
+          - accepted_values:
+              values: [ 0, 1 ]
+      - name: disney_plus
+        tests:
+          - accepted_values:
+              values: [ 0, 1 ]
+      - name: type
+      - name: directors
+        tests:
+          - not_null
+      - name: genres
+      - name: countries
+      - name: languages
+      - name: runtime
   - name: stg_mixed__countries
     description: "Adds a countries table based on countries"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_mixed')
+              field: uid
+      - name: id
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null
   - name: stg_mixed__directors
     description: "Adds a directors table based on directors"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_mixed')
+              field: uid
+      - name: id
+        tests:
+          - not_null
+      - name: director
+        tests:
+          - not_null
   - name: stg_mixed__languages
     description: "Adds a languages table based on languages"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_mixed')
+              field: uid
+      - name: id
+        tests:
+          - not_null
+      - name: language
+        tests:
+          - not_null

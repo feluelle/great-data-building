@@ -8,7 +8,7 @@ with dim_tv_shows as (
            stg_netflix_titles.date_added as netflix_date_added,
            stg_netflix_titles.release_year as netflix_release_year,
            stg_netflix_titles.rating as netflix_rating,
-           regexp_replace(stg_netflix_titles.duration, '\D', '', 'g')::integer as netflix_seasons,
+           stg_netflix_titles.duration as netflix_seasons,
            stg_netflix_titles.genres as netflix_genres,
            stg_netflix_titles.description as netflix_description,
            stg_prime_video_tv_shows.show_number as prime_video_show_number,

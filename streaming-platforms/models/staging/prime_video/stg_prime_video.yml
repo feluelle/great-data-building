@@ -3,5 +3,38 @@ version: 2
 models:
   - name: stg_prime_video_tv_shows
     description: "Performs basic operations like cleaning or renaming columns"
+    columns:
+      - name: uid
+        tests:
+          - unique
+          - not_null
+      - name: show_number
+        tests:
+          - unique
+          - not_null
+      - name: show_name
+        tests:
+          - not_null
+      - name: release_year
+        tests:
+          - not_null
+      - name: seasons
+      - name: language
+      - name: genres
+      - name: imdb_rating
+      - name: viewers_age
   - name: stg_prime_video_tv_shows__genres
     description: "Adds a genres table based on genres"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_prime_video_tv_shows')
+              field: uid
+      - name: show_number
+        tests:
+          - not_null
+      - name: genre
+        tests:
+          - not_null

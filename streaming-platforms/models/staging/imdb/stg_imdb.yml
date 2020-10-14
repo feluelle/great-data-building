@@ -3,16 +3,125 @@ version: 2
 models:
   - name: stg_imdb_movies
     description: "Performs basic operations like cleaning or renaming columns"
+    columns:
+      - name: uid
+        tests:
+          - unique
+          - not_null
+      - name: title_id
+        tests:
+          - unique
+          - not_null
+      - name: title
+        tests:
+          - not_null
+      - name: original_title
+        tests:
+          - not_null
+      - name: release_year
+        tests:
+          - not_null
+      - name: date_published
+        tests:
+          - not_null
+      - name: genres
+        tests:
+          - not_null
+      - name: duration_in_minutes
+        tests:
+          - not_null
+      - name: countries
+      - name: languages
+      - name: directors
+        tests:
+          - not_null
+      - name: writers
+      - name: production_company
+      - name: actors
+      - name: description
+      - name: avg_vote
+      - name: votes
+      - name: budget
+      - name: usa_gross_income
+      - name: worldwide_gross_income
+      - name: metascore
+      - name: reviews_from_users
+      - name: reviews_from_critics
   - name: stg_imdb_movies__actors
     description: "Adds a actors table based on actors"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_imdb_movies')
+              field: uid
+      - name: title_id
+        tests:
+          - not_null
+      - name: actor
+        tests:
+          - not_null
   - name: stg_imdb_movies__countries
     description: "Adds a countries table based on countries"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_imdb_movies')
+              field: uid
+      - name: title_id
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null
   - name: stg_imdb_movies__directors
     description: "Adds a directors table based on directors"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_imdb_movies')
+              field: uid
+      - name: title_id
+        tests:
+          - not_null
+      - name: director
+        tests:
+          - not_null
   - name: stg_imdb_movies__genres
     description: "Adds a genres table based on genres"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_imdb_movies')
+              field: uid
+      - name: title_id
+        tests:
+          - not_null
+      - name: genre
+        tests:
+          - not_null
   - name: stg_imdb_movies__languages
     description: "Adds a languages table based on languages"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_imdb_movies')
+              field: uid
+      - name: title_id
+        tests:
+          - not_null
+      - name: language
+        tests:
+          - not_null
   - name: stg_imdb_names
     description: "Performs basic operations like cleaning or renaming columns"
   - name: stg_imdb_ratings

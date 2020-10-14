@@ -1,11 +1,10 @@
-with stg_imdb_movies as (
+with pre__stg_imdb_movies as (
 
-    select md5(row(title, 'Movie', regexp_replace("year", '\D', '', 'g')::int)::text) as uid,
-           imdb_title_id as title_id,
+    select imdb_title_id as title_id,
            title,
            original_title,
-           regexp_replace("year", '\D', '', 'g')::int as release_year,
-           regexp_replace(date_published, '\D', '', 'g') as date_published,
+           {{ extract_number_from_string("year") }}::int as release_year,
+           {{ extract_number_from_string("date_published") }} as date_published,
            genre as genres,
            duration as duration_in_minutes,
            country as countries,
@@ -24,8 +23,15 @@ with stg_imdb_movies as (
            reviews_from_users,
            reviews_from_critics
     from {{ source('imdb', 'src_imdb_movies') }}
+    where director is not null  -- A director is essential for the uniqueness of a title
+
+), stg_imdb_movies as (
+
+    select {{ create_uid("original_title", "'Movie'", "release_year", "duration_in_minutes", "directors") }} as uid,
+           *
+    from pre__stg_imdb_movies
 
 )
 
-select *
+select distinct on(uid) *
 from stg_imdb_movies

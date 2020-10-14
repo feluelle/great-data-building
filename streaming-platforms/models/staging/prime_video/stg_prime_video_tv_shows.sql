@@ -1,7 +1,6 @@
-with stg_prime_video_tv_shows as (
+with pre__stg_prime_video_tv_shows as (
 
-    select md5(row("Name of the show", 'TV Show', "Year of release")::text) as uid,
-           "S.no." as show_number,
+    select "S.no." as show_number,
            "Name of the show" as show_name,
            "Year of release" as release_year,
            "No of seasons available" as seasons,
@@ -11,7 +10,12 @@ with stg_prime_video_tv_shows as (
            "Age of viewers" as viewers_age
     from {{ source('prime_video', 'src_prime_video_tv_shows') }}
 
+), stg_prime_video_tv_shows as (
+
+    select {{ create_uid("show_name", "'TV Show'", "release_year", "seasons", "NULL") }} as uid,
+           *
+    from pre__stg_prime_video_tv_shows
 )
 
-select *
+select distinct on(uid) *
 from stg_prime_video_tv_shows
