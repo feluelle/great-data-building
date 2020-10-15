@@ -3,25 +3,170 @@ version: 2
 models:
   - name: dim_movies
     description: "Shows Movies only"
+    columns:
+      - name: imdb_title_id
+        tests:
+          - unique
+      - name: imdb_title
+      - name: imdb_release_year
+      - name: imdb_date_published
+      - name: imdb_genres
+      - name: imdb_duration_in_minutes
+      - name: imdb_countries
+      - name: imdb_languages
+      - name: imdb_directors
+      - name: imdb_writers
+      - name: imdb_production_company
+      - name: imdb_actors
+      - name: imdb_description
+      - name: imdb_avg_vote
+      - name: imdb_votes
+      - name: imdb_budget
+      - name: imdb_usa_gross_income
+      - name: imdb_worldwide_gross_income
+      - name: imdb_metascore
+      - name: imdb_reviews_from_users
+      - name: imdb_reviews_from_critics
+      - name: netflix_show_id
+        tests:
+          - unique
+      - name: netflix_title
+      - name: netflix_directors
+      - name: netflix_actors
+      - name: netflix_countries
+      - name: netflix_date_added
+      - name: netflix_release_year
+      - name: netflix_rating
+      - name: netflix_seasons
+      - name: netflix_genres
+      - name: netflix_description
   - name: dim_tv_shows
     description: "Shows TV-Shows only"
+    columns:
+      - name: netflix_show_id
+        tests:
+          - unique
+      - name: netflix_title
+      - name: netflix_directors
+      - name: netflix_actors
+      - name: netflix_countries
+      - name: netflix_date_added
+      - name: netflix_release_year
+      - name: netflix_rating
+      - name: netflix_seasons
+      - name: netflix_genres
+      - name: netflix_description
+      - name: prime_video_show_number
+        tests:
+          - unique
+      - name: prime_video_show_name
+      - name: prime_video_release_year
+      - name: prime_video_seasons
+      - name: prime_video_language
+      - name: prime_video_genres
+      - name: imdb_rating
+      - name: prime_video_viewers_age
   - name: fct_all_titles
     description: "Shows all titles"
+    columns:
+      - name: uid
+        tests:
+          - not_null
+          - unique
+      - name: title
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: release_year
+        tests:
+          - not_null
   - name: fct_movies_from_usa
     description: "Shows the movies from the US"
+    columns:
+      - name: total
+        tests:
+          - not_null
+    tests:
+      - has_row_count:
+          value: 1
   - name: fct_this_years_added_tv_shows_to_netflix
     description: "Shows the TV shows added this year to Netflix"
   - name: fct_titles_movie_and_tv_show
     description: "Shows all titles that are movie and tv-show"
+    columns:
+      - name: title
   - name: fct_top_10_actors
     description: "Shows the top 10 actors"
+    columns:
+      - name: actor
+      - name: total
+    tests:
+      - has_row_count:
+          value: 10
   - name: fct_top_10_directors
     description: "Shows the top 10 directors"
+    columns:
+      - name: actor
+      - name: total
+    tests:
+      - has_row_count:
+          value: 10
   - name: fct_top_10_genres_on_netflix
     description: "Shows the top 10 genres on Netflix"
+    columns:
+      - name: actor
+      - name: total
+    tests:
+      - has_row_count:
+          value: 10
   - name: fct_tv_shows_per_provider
     description: "Shows the TV shows per provider"
+    columns:
+      - name: provider
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Prime Video', 'Netflix', 'Disney+', 'Hulu']
+      - name: title
+        tests:
+          - not_null
+      - name: directors
+      - name: actors
+      - name: countries
+      - name: date_added
+      - name: release_year
+        tests:
+          - not_null
+      - name: rating
+      - name: seasons
+      - name: genres
+      - name: description
+      - name: viewers_age
+      - name: imdb_rating
   - name: fct_type_percentage
     description: "Shows the percentages for every type out of all netflix titles"
+    columns:
+      - name: type
+        tests:
+          - not_null
+          - unique
+          - accepted_values:
+              values: ['Unknown', 'TV Show', 'Movie']
+      - name: percentage
+        tests:
+          - not_null
+          - is_100_percent
+    tests:
+      - has_row_count:
+          value: 3
   - name: fct_unique_titles
     description: "Shows the number of unique titles"
+    columns:
+      - name: unique_titles
+        tests:
+          - not_null
+    tests:
+      - has_row_count:
+          value: 1

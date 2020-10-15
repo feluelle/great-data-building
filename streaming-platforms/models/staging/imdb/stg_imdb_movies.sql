@@ -27,7 +27,7 @@ with pre__stg_imdb_movies as (
 
 ), stg_imdb_movies as (
 
-    select {{ create_uid("original_title", "'Movie'", "release_year", "duration_in_minutes", "directors") }} as uid,
+    select {{ create_uid("title", "'Movie'", "release_year", "duration_in_minutes", "directors") }} as uid,
            *
     from pre__stg_imdb_movies
 

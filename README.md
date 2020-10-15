@@ -47,3 +47,7 @@ After you've downloaded the source data, you can load them into the database by 
 Finally you can generate the tables and/or views based of the `models`, run:
 
 `$ dbt run --profiles-dir $PROJECT_DIR --project-dir $PROJECT_DIR`
+
+To validate your data and schemas, run:
+
+`$ dbt test --profiles-dir $PROJECT_DIR --project-dir $PROJECT_DIR`

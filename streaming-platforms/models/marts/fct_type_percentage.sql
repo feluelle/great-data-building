@@ -1,7 +1,7 @@
 with fct_type_percentage as (
 
     select distinct "type",
-                    count(*) over(partition by "type") * 100.0 / count(*) over() as percentage
+                    round(count(*) over(partition by "type") * 100.0 / count(*) over(), 2) as percentage
     from {{ ref('fct_all_titles') }}
 
 )
