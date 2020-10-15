@@ -21,20 +21,20 @@ with dim_movies as (
            stg_imdb_movies.metascore as imdb_metascore,
            stg_imdb_movies.reviews_from_users as imdb_reviews_from_users,
            stg_imdb_movies.reviews_from_critics as imdb_reviews_from_critics,
-           stg_netflix_titles.show_id as netflix_show_id,
-           stg_netflix_titles.title as netflix_title,
-           stg_netflix_titles.directors as netflix_directors,
-           stg_netflix_titles.actors as netflix_actors,
-           stg_netflix_titles.countries as netflix_countries,
-           stg_netflix_titles.date_added as netflix_date_added,
-           stg_netflix_titles.release_year as netflix_release_year,
-           stg_netflix_titles.rating as netflix_rating,
-           stg_netflix_titles.duration as netflix_duration,
-           stg_netflix_titles.genres as netflix_genres,
-           stg_netflix_titles.description as netflix_description
+           stg_netflix_titles__movies.show_id as netflix_show_id,
+           stg_netflix_titles__movies.title as netflix_title,
+           stg_netflix_titles__movies.directors as netflix_directors,
+           stg_netflix_titles__movies.actors as netflix_actors,
+           stg_netflix_titles__movies.countries as netflix_countries,
+           stg_netflix_titles__movies.date_added as netflix_date_added,
+           stg_netflix_titles__movies.release_year as netflix_release_year,
+           stg_netflix_titles__movies.rating as netflix_rating,
+           stg_netflix_titles__movies.duration as netflix_duration,
+           stg_netflix_titles__movies.genres as netflix_genres,
+           stg_netflix_titles__movies.description as netflix_description
     from {{ ref('stg_imdb_movies') }}
-    full join {{ ref('stg_netflix_titles') }}
-    on stg_imdb_movies.uid = stg_netflix_titles.uid and stg_netflix_titles."type" = 'Movie'
+    full join {{ ref('stg_netflix_titles__movies') }}
+    on stg_imdb_movies.uid = stg_netflix_titles__movies.uid
 
 )
 

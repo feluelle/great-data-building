@@ -6,8 +6,10 @@ with fct_movies_from_usa as (
 
     union
 
-    select uid
+    select stg_netflix_titles__movies.uid
     from {{ ref('stg_netflix_titles__countries') }}
+    right join {{ ref('stg_netflix_titles__movies') }}
+    on stg_netflix_titles__countries.uid = stg_netflix_titles__movies.uid
     where country = 'United States'
 
 )

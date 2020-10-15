@@ -93,6 +93,31 @@ models:
           value: 1
   - name: fct_this_years_added_tv_shows_to_netflix
     description: "Shows the TV shows added this year to Netflix"
+    columns:
+      - name: uid
+        tests:
+          - unique
+          - not_null
+      - name: show_id
+        tests:
+          - unique
+          - not_null
+      - name: title
+        tests:
+          - not_null
+      - name: directors
+        tests:
+          - not_null
+      - name: actors
+      - name: countries
+      - name: date_added
+      - name: release_year
+        tests:
+          - not_null
+      - name: rating
+      - name: duration
+      - name: genres
+      - name: description
   - name: fct_titles_movie_and_tv_show
     description: "Shows all titles that are movie and tv-show"
     columns:

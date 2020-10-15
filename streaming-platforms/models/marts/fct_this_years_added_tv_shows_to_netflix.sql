@@ -1,8 +1,8 @@
 with fct_this_years_added_tv_shows_to_netflix as (
 
     select *
-    from {{ ref('dim_tv_shows') }}
-    where extract(year from netflix_date_added) = extract(year from current_date)
+    from {{ ref('stg_netflix_titles__tv_shows') }}
+    where extract(year from date_added) = extract(year from current_date)
 
 )
 
