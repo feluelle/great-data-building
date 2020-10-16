@@ -91,6 +91,21 @@ models:
     tests:
       - has_row_count:
           value: 1
+  - name: fct_tallest_person
+    description: "Shows the tallest person"
+    columns:
+      - name: name
+        tests:
+          - not_null
+      - name: height_in_cm
+        tests:
+          - not_null
+          - is_in_range:
+              min_value: 50
+              max_value: 250
+    tests:
+      - has_row_count:
+          value: 1
   - name: fct_this_years_added_tv_shows_to_netflix
     description: "Shows the TV shows added this year to Netflix"
     columns:

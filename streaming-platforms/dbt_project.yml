@@ -62,3 +62,8 @@ seeds:
       Prime TV Shows Data set:
         +alias: src_prime_video_tv_shows
       +schema: prime_video
+
+snapshots:
+  target_schema: snapshots
+  strategy: check
+  check_cols: all

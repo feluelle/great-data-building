@@ -3,7 +3,11 @@ with stg_imdb_names as (
     select imdb_name_id as name_id,
            "name",
            birth_name,
-           height as height_in_cm,
+           height,
+           case when height < 50 then height * 10  -- seems to be in dm values
+                when height > 250 then height / 10  -- seems to be in mm values
+                else height
+           end as height_in_cm,
            bio,
            {{ clean_text("birth_details") }} as birth_details,
            nullif(date_of_birth, birth_details)::date as date_of_birth,
