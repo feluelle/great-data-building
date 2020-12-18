@@ -1,4 +1,4 @@
-with fct_all_titles as (
+with all_titles as (
 
     select uid,
            title,
@@ -33,4 +33,4 @@ with fct_all_titles as (
 )
 
 select *
-from fct_all_titles
+from all_titles

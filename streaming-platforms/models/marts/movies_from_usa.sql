@@ -1,4 +1,4 @@
-with fct_movies_from_usa as (
+with movies_from_usa as (
 
     select uid
     from {{ ref('stg_imdb_movies__countries') }}
@@ -15,4 +15,4 @@ with fct_movies_from_usa as (
 )
 
 select count(*) as total
-from fct_movies_from_usa
+from movies_from_usa

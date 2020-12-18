@@ -1,7 +1,7 @@
-with fct_titles_movie_and_tv_show as (
+with titles_movie_and_tv_show as (
 
     select title
-    from {{ ref('fct_all_titles') }}
+    from {{ ref('all_titles') }}
     where "type" != 'Unknown'
     group by title
     having count(title) > 1
@@ -10,4 +10,4 @@ with fct_titles_movie_and_tv_show as (
 )
 
 select *
-from fct_titles_movie_and_tv_show
+from titles_movie_and_tv_show

@@ -1,4 +1,4 @@
-with fct_this_years_added_tv_shows_to_netflix as (
+with this_years_added_tv_shows_to_netflix as (
 
     select *
     from {{ ref('stg_netflix_titles__tv_shows') }}
@@ -7,4 +7,4 @@ with fct_this_years_added_tv_shows_to_netflix as (
 )
 
 select *
-from fct_this_years_added_tv_shows_to_netflix
+from this_years_added_tv_shows_to_netflix

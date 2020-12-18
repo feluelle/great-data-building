@@ -1,4 +1,4 @@
-with fct_all_directors as (
+with all_directors as (
 
     select uid,
            director
@@ -16,12 +16,12 @@ with fct_all_directors as (
            director
     from {{ ref('stg_mixed__directors') }}
 
-), fct_top_10_directors as (
+), top_10_directors as (
 
     select director, count(director) as total
-    from {{ ref('fct_all_titles') }}
-    left join fct_all_directors
-    on fct_all_titles.uid = fct_all_directors.uid
+    from {{ ref('all_titles') }}
+    left join all_directors
+    on all_titles.uid = all_directors.uid
     group by director
     order by total desc
     limit 10
@@ -29,4 +29,4 @@ with fct_all_directors as (
 )
 
 select *
-from fct_top_10_directors
+from top_10_directors

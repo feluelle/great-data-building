@@ -1,4 +1,4 @@
-with fct_tallest_person as (
+with tallest_person as (
 
     select name,
            height_in_cm
@@ -10,4 +10,4 @@ with fct_tallest_person as (
 )
 
 select *
-from fct_tallest_person
+from tallest_person

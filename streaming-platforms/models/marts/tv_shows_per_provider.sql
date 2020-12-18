@@ -1,4 +1,4 @@
-with fct_tv_shows_per_provider as (
+with tv_shows_per_provider as (
 
     select 'Netflix' as provider,
            title,
@@ -108,4 +108,4 @@ with fct_tv_shows_per_provider as (
 )
 
 select *
-from fct_tv_shows_per_provider
+from tv_shows_per_provider

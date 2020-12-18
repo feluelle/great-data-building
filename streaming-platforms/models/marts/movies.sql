@@ -1,4 +1,4 @@
-with dim_movies as (
+with movies as (
 
     select stg_imdb_movies.title_id as imdb_title_id,
            stg_imdb_movies.title as imdb_title,
@@ -39,4 +39,4 @@ with dim_movies as (
 )
 
 select *
-from dim_movies
+from movies

@@ -1,4 +1,4 @@
-with dim_tv_shows as (
+with tv_shows as (
 
     select stg_netflix_titles__tv_shows.show_id as netflix_show_id,
            stg_netflix_titles__tv_shows.title as netflix_title,
@@ -26,4 +26,4 @@ with dim_tv_shows as (
 )
 
 select *
-from dim_tv_shows
+from tv_shows
